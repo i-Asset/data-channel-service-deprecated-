@@ -31,7 +31,7 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Push Docker') {
-            sh 'docker push nimbleplatform/data-channel-service:staging'
+            sh 'docker push iassetplatform/data-channel-service:staging'
         }
 
         stage('Deploy') {

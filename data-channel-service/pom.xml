@@ -306,7 +306,7 @@
             <id>docker</id>
             <properties>
                 <docker.plugin.version>0.4.13</docker.plugin.version>
-                <docker.image.prefix>nimbleplatform</docker.image.prefix>
+                <docker.image.prefix>iassetplatform</docker.image.prefix>
             </properties>
             <build>
                 <plugins>
