@@ -14,9 +14,9 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Build Dependencies') {
-            sh 'rm -rf common'
+            sh 'rm -rf common-1'
             sh 'git clone https://github.com/i-Asset/common-1.git'
-            dir('common') {
+            dir('common-1') {
                 sh 'git checkout ' + env.BRANCH_NAME
                 sh 'mvn clean install'
             }
@@ -31,7 +31,7 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Push Docker') {
-            sh 'docker push nimbleplatform/data-channel-service:staging'
+            sh 'docker push iassetplatform/data-channel-service:staging'
         }
 
         stage('Deploy') {
@@ -51,9 +51,9 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Build Dependencies') {
-            sh 'rm -rf common'
+            sh 'rm -rf common-1'
             sh 'git clone https://github.com/i-Asset/common-1.git'
-            dir('common') {
+            dir('common-1') {
                 sh 'git checkout ' + env.BRANCH_NAME
                 sh 'mvn clean install'
             }
