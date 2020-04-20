@@ -14,7 +14,7 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Build Dependencies') {
-            sh 'rm -rf common'
+            sh 'rm -rf common-1'
             sh 'git clone https://github.com/i-Asset/common-1.git'
             dir('common') {
                 sh 'git checkout ' + env.BRANCH_NAME
@@ -51,7 +51,7 @@ node('iasset-jenkins-slave') {
         }
 
         stage('Build Dependencies') {
-            sh 'rm -rf common'
+            sh 'rm -rf common-1'
             sh 'git clone https://github.com/i-Asset/common-1.git'
             dir('common') {
                 sh 'git checkout ' + env.BRANCH_NAME
