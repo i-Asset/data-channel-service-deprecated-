@@ -8,14 +8,14 @@ node('nimble-jenkins-slave') {
     if (env.BRANCH_NAME == 'staging') {
 
         stage('Clone and Update') {
-            git(url: 'https://github.com/nimble-platform/data-channel-service.git', branch: env.BRANCH_NAME)
+            git(url: 'https://github.com/i-Asset/data-channel-service.git', branch: env.BRANCH_NAME)
             sh 'git submodule init'
             sh 'git submodule update'
         }
 
         stage('Build Dependencies') {
             sh 'rm -rf common'
-            sh 'git clone https://github.com/nimble-platform/common'
+            sh 'git clone https://github.com/i-Asset/common-1.git'
             dir('common') {
                 sh 'git checkout ' + env.BRANCH_NAME
                 sh 'mvn clean install'
@@ -35,7 +35,7 @@ node('nimble-jenkins-slave') {
         }
 
         stage('Deploy') {
-            sh 'ssh staging "cd /srv/nimble-staging/ && ./run-staging.sh restart-single data-channel-service"'
+            sh 'ssh staging "cd /srv/docker-setup/staging/ && ./run-staging.sh restart-single data-channel-service"'
         }
     }
 
@@ -45,14 +45,14 @@ node('nimble-jenkins-slave') {
     if (env.BRANCH_NAME == 'master') {
 
         stage('Clone and Update') {
-            git(url: 'https://github.com/nimble-platform/data-channel-service.git', branch: env.BRANCH_NAME)
+            git(url: 'https://github.com/i-Asset/data-channel-service.git', branch: env.BRANCH_NAME)
             sh 'git submodule init'
             sh 'git submodule update'
         }
 
         stage('Build Dependencies') {
             sh 'rm -rf common'
-            sh 'git clone https://github.com/nimble-platform/common'
+            sh 'git clone https://github.com/i-Asset/common-1.git'
             dir('common') {
                 sh 'git checkout ' + env.BRANCH_NAME
                 sh 'mvn clean install'
